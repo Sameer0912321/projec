@@ -91,23 +91,26 @@
     <h2 class="section-title" style="color: rgb(0, 0, 0) !important; padding-top: 60px;">Our Services</h2>
     <div class="card-grid">
       <!-- Card 1 -->
-      <?php
-      include './conn.php';
-      $sel = 'SELECT * FROM services LIMIT 4';
-      $responceserve = mysqli_query($connection,$sel);
-      if($responceserve){
-          while($row = mysqli_fetch_assoc($responceserve)){
-              $title = $row['Title'];
-              $description = $row['description'];
-          echo"<div class='card'>
-          <img src='#' alt='Service 1' class='card-image'>
-          <h3 class='card-title'>$title</h3>
-          <p class='card-description'>$description</p>
-          <a href='booking.html' class='card-button'>Book Now</a>
-          </div>";
-          }
-      } 
-  ?>;
+                <?php
+                include './conn.php';
+                $sel = 'SELECT * FROM hiring';
+                $responceserve = mysqli_query($connection,$sel);
+                if($responceserve){
+                    while($row = mysqli_fetch_assoc($responceserve)){
+                        $fullname = $row['fullname'];
+                        // $description = $row['description'];
+                        $position = $row['position'];
+                        $description = $row['coverletter'];
+                        $id = $row['id'];
+                    echo"<div class='card'>
+                    <img src='./Maid.jpg' alt='Service 1' class='card-image'>
+                    <h3 class='card-title'>$position</h3>
+                    <p class='card-description'>I am $fullname. $description</p>
+                    <a href='booking.php?id=$id' class='card-button'>View More</a>
+                    </div>";
+                    }
+                } 
+  
     </div>
     <div class="view-more-button">
       <a href="#">View More</a>
